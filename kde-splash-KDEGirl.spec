@@ -10,6 +10,7 @@ License:	GPL
 Group:		X11/Amusements
 #Source0:	http://www.kde-look.org/content/download.php?content=1706
 Source0:	%{_splash}-%{version}.zip
+# Source0-md5:	c773e8219631b496aba14ae3ddba8658
 URL:		http://www.kde-look.org/content/show.php?content=1706
 BuildRequires:	unzip
 Provides:	kde-splash
@@ -41,7 +42,7 @@ Obsoletes:	kde-sdscreen-default
 Obrazek "KDE Girl" okna "Wyloguj" KDE.
 
 %prep
-%setup  -q -c -T
+%setup -q -c -T
 unzip %{SOURCE0}
 
 %install
