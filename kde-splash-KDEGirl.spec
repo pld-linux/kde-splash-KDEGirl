@@ -1,43 +1,41 @@
 
 %define		_splash		KDEGirl
 
-Summary:	"KDE Girl" splash screen
-Summary(pl):	Ekran startowy "KDE Girl"
+Summary:	KDE splash screen
+Summary(pl):	Ekran startowy KDE
 Name:		kde-splash-%{_splash}
 Version:	03
-Release:	2
+Release:	3
 License:	GPL
-Group:		Themes/Gtk
+Group:		X11/Amusements
 #Source0:	http://www.kde-look.org/content/download.php?content=1706
 Source0:	%{_splash}-%{version}.zip
 URL:		http://www.kde-look.org/content/show.php?content=1706
 Obsoletes:	kde-splash
 Provides:	kde-splash
 BuildRequires:	unzip
-Requires:	kdebase >= 3.0.2-7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 
 %description
-"KDE Girl" splash screen.
+"KDE Girl" KDE splash screen.
 
 %description -l pl
-Ekran startowy "KDE Girl".
+Ekran startowy KDE "KDE Girl".
 
 %package -n kde-sdscreen-%{_splash}
-Summary:	"KDE Girl" Logout logo
-Summary(pl):	Logo okna  Logout "KDE Girl"
-Group:		Themes/Gtk
-Requires:	kdebase >= 3.0.2-7
+Summary:	KDE "Logout" picture
+Summary(pl):	Obrazek okna "Wyloguj" KDE
+Group:		X11/Amusements
 Obsoletes:	kde-sdscreen
 Provides:	kde-sdscreen
 
 %description -n kde-sdscreen-%{_splash}
-"KDE Girl" Logout logo.
+"KDE Girl" KDE "Logout" picture.
 
 %description -n kde-sdscreen-%{_splash} -l pl
-Logo okna  Logout "KDE Girl".
+Obrazek "KDE Girl" okna "Wyloguj" KDE.
 
 %prep
 %setup  -q -c -T
@@ -60,8 +58,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{_datadir}/apps/ksplash/pics/*
+%{_datadir}/apps/ksplash/*
 
 %files -n kde-sdscreen-%{_splash}
 %defattr(644,root,root,755)
-%{_datadir}/apps/ksmserver/pics/*
+%{_datadir}/apps/ksmserver/*
