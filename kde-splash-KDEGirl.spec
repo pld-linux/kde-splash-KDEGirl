@@ -5,13 +5,14 @@ Summary:	KDE splash screen
 Summary(pl):	Ekran startowy KDE
 Name:		kde-splash-%{_splash}
 Version:	03
-Release:	5
+Release:	6
 License:	GPL
 Group:		X11/Amusements
 #Source0:	http://www.kde-look.org/content/download.php?content=1706
 Source0:	%{_splash}-%{version}.zip
 # Source0-md5:	c773e8219631b496aba14ae3ddba8658
-Source1:        %{name}-themerc
+Source1:        %{name}-Preview.png
+Source2:        %{name}-Theme.rc
 URL:		http://www.kde-look.org/content/show.php?content=1706
 BuildRequires:	unzip
 Requires:	kdebase-desktop
@@ -55,6 +56,9 @@ install splash*.png $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/Themes/%{_splash}
 install shutdownkonq.png $RPM_BUILD_ROOT%{_datadir}/apps/ksmserver/pics
 
 install %{SOURCE1} \
+    $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/Themes/%{_splash}/Preview.png
+
+install %{SOURCE2} \
     $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/Themes/%{_splash}/Theme.rc
 
 %clean
