@@ -5,15 +5,17 @@ Summary:	KDE splash screen
 Summary(pl):	Ekran startowy KDE
 Name:		kde-splash-%{_splash}
 Version:	03
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Amusements
 #Source0:	http://www.kde-look.org/content/download.php?content=1706
 Source0:	%{_splash}-%{version}.zip
 URL:		http://www.kde-look.org/content/show.php?content=1706
-Obsoletes:	kde-splash
-Provides:	kde-splash
 BuildRequires:	unzip
+Provides:	kde-splash
+Obsoletes:	kde-splash
+Obsoletes:	kde-splash-default
+Obsoletes:	kde-splash-keramik
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -28,8 +30,9 @@ Ekran startowy KDE "KDE Girl".
 Summary:	KDE "Logout" picture
 Summary(pl):	Obrazek okna "Wyloguj" KDE
 Group:		X11/Amusements
-Obsoletes:	kde-sdscreen
 Provides:	kde-sdscreen
+Obsoletes:	kde-sdscreen
+Obsoletes:	kde-sdscreen-default
 
 %description -n kde-sdscreen-%{_splash}
 "KDE Girl" KDE "Logout" picture.
@@ -40,8 +43,6 @@ Obrazek "KDE Girl" okna "Wyloguj" KDE.
 %prep
 %setup  -q -c -T
 unzip %{SOURCE0}
-
-%build
 
 %install
 rm -rf $RPM_BUILD_ROOT
