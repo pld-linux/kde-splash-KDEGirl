@@ -5,19 +5,17 @@ Summary:	KDE splash screen
 Summary(pl):	Ekran startowy KDE
 Name:		kde-splash-%{_splash}
 Version:	03
-Release:	4
+Release:	5
 License:	GPL
 Group:		X11/Amusements
 #Source0:	http://www.kde-look.org/content/download.php?content=1706
 Source0:	%{_splash}-%{version}.zip
 # Source0-md5:	c773e8219631b496aba14ae3ddba8658
+Source1:        %{name}-themerc
 URL:		http://www.kde-look.org/content/show.php?content=1706
 BuildRequires:	unzip
-Provides:	kde-splash
-Requires:	kdebase >= 3.0.3
-Obsoletes:	kde-splash
-Obsoletes:	kde-splash-default
-Obsoletes:	kde-splash-keramik
+Requires:	kdebase-desktop
+BuildArch:      noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -26,19 +24,19 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description -l pl
 Ekran startowy KDE "KDE Girl".
 
-%package -n kde-sdscreen-%{_splash}
+%package -n kde-logoutpic-%{_splash}
 Summary:	KDE "Logout" picture
 Summary(pl):	Obrazek okna "Wyloguj" KDE
 Group:		X11/Amusements
-Provides:	kde-sdscreen
-Requires:	kdebase >= 3.0.3
+Requires:	kdebase-desktop
+Provides:	kde-logoutpic
+Obsoletes:	kde-logoutpic
 Obsoletes:	kde-sdscreen
-Obsoletes:	kde-sdscreen-default
 
-%description -n kde-sdscreen-%{_splash}
+%description -n kde-logoutpic-%{_splash}
 "KDE Girl" KDE "Logout" picture.
 
-%description -n kde-sdscreen-%{_splash} -l pl
+%description -n kde-logoutpic-%{_splash} -l pl
 Obrazek "KDE Girl" okna "Wyloguj" KDE.
 
 %prep
@@ -47,20 +45,25 @@ unzip %{SOURCE0}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/pics
-install -d $RPM_BUILD_ROOT%{_datadir}/apps/ksmserver/pics
-install * $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/pics
 
-mv $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/pics/shutdownkonq.png \
+install -d \
+	$RPM_BUILD_ROOT%{_datadir}/apps/ksplash/Themes/%{_splash} \
 	$RPM_BUILD_ROOT%{_datadir}/apps/ksmserver/pics
+
+install splash*.png $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/Themes/%{_splash}
+
+install shutdownkonq.png $RPM_BUILD_ROOT%{_datadir}/apps/ksmserver/pics
+
+install %{SOURCE1} \
+    $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/Themes/%{_splash}/Theme.rc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{_datadir}/apps/ksplash/*
+%{_datadir}/apps/ksplash/Themes/%{_splash}
 
-%files -n kde-sdscreen-%{_splash}
+%files -n kde-logoutpic-%{_splash}
 %defattr(644,root,root,755)
-%{_datadir}/apps/ksmserver/*
+%{_datadir}/apps/ksmserver/pics/shutdownkonq.png
