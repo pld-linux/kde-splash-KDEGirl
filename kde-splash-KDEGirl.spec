@@ -19,7 +19,6 @@ Obsoletes:	kde-splash-default
 Obsoletes:	kde-splash-keramik
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
 
 %description
 "KDE Girl" KDE splash screen.
