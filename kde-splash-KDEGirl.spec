@@ -13,6 +13,7 @@ Source0:	%{_splash}-%{version}.zip
 URL:		http://www.kde-look.org/content/show.php?content=1706
 BuildRequires:	unzip
 Provides:	kde-splash
+Requires:	kdebase >= 3.0.3
 Obsoletes:	kde-splash
 Obsoletes:	kde-splash-default
 Obsoletes:	kde-splash-keramik
@@ -31,6 +32,7 @@ Summary:	KDE "Logout" picture
 Summary(pl):	Obrazek okna "Wyloguj" KDE
 Group:		X11/Amusements
 Provides:	kde-sdscreen
+Requires:	kdebase >= 3.0.3
 Obsoletes:	kde-sdscreen
 Obsoletes:	kde-sdscreen-default
 
