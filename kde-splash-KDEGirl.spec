@@ -5,7 +5,7 @@ Summary:	KDE splash screen
 Summary(pl):	Ekran startowy KDE
 Name:		kde-splash-%{_splash}
 Version:	03
-Release:	7
+Release:	8
 License:	GPL
 Group:		X11/Amusements
 #Source0:	http://www.kde-look.org/content/download.php?content=1706
@@ -14,10 +14,7 @@ Source0:	%{_splash}-%{version}.zip
 URL:		http://www.kde-look.org/content/show.php?content=1706
 BuildRequires:	unzip
 Provides:	kde-splash
-Requires:	kdebase-core
-Obsoletes:	kde-splash
-Obsoletes:	kde-splash-default
-Obsoletes:	kde-splash-keramik
+Requires:	kdebase-core >= 9:3.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -47,19 +44,27 @@ unzip %{SOURCE0}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/pics
 install -d $RPM_BUILD_ROOT%{_datadir}/apps/ksmserver/pics
-install * $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/pics
+mv shutdownkonq.png $RPM_BUILD_ROOT%{_datadir}/apps/ksmserver/pics
 
-mv $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/pics/shutdownkonq.png \
-	$RPM_BUILD_ROOT%{_datadir}/apps/ksmserver/pics
+install -d $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/Themes/%{_splash}
+cp * $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/Themes/%{_splash}
+
+cat > $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/Themes/%{_splash}/Theme.rc << _EOF_
+[KSplash Theme: %{_splash}]
+Name = %{_splash} Splash Theme
+Description = This is a %{_splash} Splash Screen for KDE
+Engine = Default
+Version = %{version}
+Icons Flashing = true
+_EOF_
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%{_datadir}/apps/ksplash/*
+%{_datadir}/apps/ksplash/Themes/%{_splash}
 
 %files -n kde-sdscreen-%{_splash}
 %defattr(644,root,root,755)
