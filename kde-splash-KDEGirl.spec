@@ -20,7 +20,6 @@ Obsoletes:	kde-splash-default
 Obsoletes:	kde-splash-keramik
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-
 %description
 "KDE Girl" KDE splash screen.
 
@@ -48,13 +47,12 @@ unzip %{SOURCE0}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/pics
+install -d $RPM_BUILD_ROOT%{_datadir}/apps/ksmserver/pics
+install * $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/pics
 
-install -d "$RPM_BUILD_ROOT/%{_datadir}/apps/ksplash/pics"
-install -d "$RPM_BUILD_ROOT/%{_datadir}/apps/ksmserver/pics"
-install * "$RPM_BUILD_ROOT/%{_datadir}/apps/ksplash/pics"
-
-mv $RPM_BUILD_ROOT/%{_datadir}/apps/ksplash/pics/shutdownkonq.png \
-	$RPM_BUILD_ROOT/%{_datadir}/apps/ksmserver/pics
+mv $RPM_BUILD_ROOT%{_datadir}/apps/ksplash/pics/shutdownkonq.png \
+	$RPM_BUILD_ROOT%{_datadir}/apps/ksmserver/pics
 
 %clean
 rm -rf $RPM_BUILD_ROOT
