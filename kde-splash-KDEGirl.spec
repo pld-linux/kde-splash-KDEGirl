@@ -5,7 +5,7 @@ Summary:	KDE splash screen
 Summary(pl):	Ekran startowy KDE
 Name:		kde-splash-%{_splash}
 Version:	03
-Release:	6
+Release:	7
 License:	GPL
 Group:		X11/Amusements
 #Source0:	http://www.kde-look.org/content/download.php?content=1706
@@ -14,7 +14,7 @@ Source0:	%{_splash}-%{version}.zip
 URL:		http://www.kde-look.org/content/show.php?content=1706
 BuildRequires:	unzip
 Provides:	kde-splash
-Requires:	kdebase >= 3.0.3
+Requires:	kdebase-core
 Obsoletes:	kde-splash
 Obsoletes:	kde-splash-default
 Obsoletes:	kde-splash-keramik
@@ -31,7 +31,7 @@ Summary:	KDE "Logout" picture
 Summary(pl):	Obrazek okna "Wyloguj" KDE
 Group:		X11/Amusements
 Provides:	kde-sdscreen
-Requires:	kdebase >= 3.0.3
+Requires:	kdebase-core
 Obsoletes:	kde-sdscreen
 Obsoletes:	kde-sdscreen-default
 
