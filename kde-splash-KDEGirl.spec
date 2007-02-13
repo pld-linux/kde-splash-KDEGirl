@@ -2,7 +2,7 @@
 %define		_splash		KDEGirl
 
 Summary:	KDE splash screen
-Summary(pl.UTF-8):   Ekran startowy KDE
+Summary(pl.UTF-8):	Ekran startowy KDE
 Name:		kde-splash-%{_splash}
 Version:	03
 Release:	8
@@ -25,7 +25,7 @@ Ekran startowy KDE "KDE Girl".
 
 %package -n kde-sdscreen-%{_splash}
 Summary:	KDE "Logout" picture
-Summary(pl.UTF-8):   Obrazek okna "Wyloguj" KDE
+Summary(pl.UTF-8):	Obrazek okna "Wyloguj" KDE
 Group:		X11/Amusements
 Provides:	kde-sdscreen
 Requires:	kdebase-core
